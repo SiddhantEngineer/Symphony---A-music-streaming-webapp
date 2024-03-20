@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 
 //mongo db setup
 const uri =
-  "mongodb+srv://<user>:<password>@cluster0.fcdv1mo.mongodb.net/symphony?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://<username>:<password>@<cluster>/<database>?retryWrites=true&w=majority";
 
 const clientOptions = {
   serverApi: { version: "1", strict: true, deprecationErrors: true },
