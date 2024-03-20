@@ -1,0 +1,7 @@
+#player-root{
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    height: 50px;
+    background: var(--accent);
+}
