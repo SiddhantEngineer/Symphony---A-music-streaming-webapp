@@ -3,10 +3,6 @@
     --accentLight: rgb(231, 234, 255);
     --accentDark: rgb(0, 0, 0);
 }
-/* @font-face {
-    font-family: newMe;
-    src: url("Realistic.otf");
-} */
 *{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

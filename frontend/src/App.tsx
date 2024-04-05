@@ -1,17 +1,21 @@
 import React from "react";
 import "./App.css";
 import { useState } from "react";
-import Home from "./home/home";
+import Viewport from "./viewport/viewport";
 import Login from "./login/login";
+// import Signin from "./signin/singin";
 
 function App() {
-  const [userValidated, setUserValidated] = useState(false);
+  const [userValidated, setUserValidated] = useState(true);
   const [userID, setUserID] = useState("");
   const checkSession = () => {};
   return (
     <>
       {userValidated ? (
-        <Home setUserValidated={setUserValidated} userID={userID}></Home>
+        <Viewport
+          setUserValidated={setUserValidated}
+          userInfo={{ name: "sid" }}
+        ></Viewport>
       ) : (
         <Login
           setUserID={setUserID}

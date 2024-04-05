@@ -1,0 +1,15 @@
+fieldset{
+    width: 500px;
+    height: max-content;
+}
+form{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+form label{
+    text-align: right;
+    margin: 10px;
+}
+form input{
+    margin: 10px;
+}

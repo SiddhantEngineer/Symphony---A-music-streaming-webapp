@@ -7,6 +7,7 @@ interface Props {
 }
 
 function Login({ setUserValidated, setUserID }: Props) {
+  console.log(process.env.REACT_APP_SERVER);
   let username = "";
   let password = "";
   const [errorMessage, setErrorMessage] = useState("");
@@ -17,7 +18,8 @@ function Login({ setUserValidated, setUserID }: Props) {
     password = event.currentTarget.value;
   };
   const checkUserToken = async () => {
-    fetch("http://" + window.location.hostname + ":5000/cookielogin", {
+    const uri = process.env.REACT_APP_SERVER + "/cookielogin";
+    fetch(uri, {
       method: "GET",
       credentials: "include",
     })
@@ -40,7 +42,8 @@ function Login({ setUserValidated, setUserID }: Props) {
     },
     submitButton: HTMLInputElement
   ) => {
-    fetch("http://" + window.location.hostname + ":5000/login", {
+    const uri = process.env.REACT_APP_SERVER + "/login";
+    fetch(uri, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
