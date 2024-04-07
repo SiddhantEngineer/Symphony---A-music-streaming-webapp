@@ -50,3 +50,28 @@ userListForm.addEventListener("submit", (e) => {
       userListContainer.innerHTML = "<pre>" + str + "</pre>";
     });
 });
+
+//-------------------------------------------
+//User Delete
+//-------------------------------------------
+const userDeleteForm = document.getElementById("user-delete");
+const userDeleteStatus = document.getElementById("user-delete-status");
+
+userDeleteForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let formData = new FormData(userDeleteForm);
+
+  userDeleteStatus.innerHTML = "loading";
+
+  fetch("userDelete", { method: "DELETE", body: formData })
+    .then((response) => {
+      if (!response.ok) {
+        console.warn("Response was not okay");
+        return;
+      }
+      return response.text();
+    })
+    .then((data) => {
+      userDeleteStatus.innerHTML = data;
+    });
+});

@@ -28,6 +28,12 @@ router.get("/userList", async (req, res) => {
   res.json(data);
 });
 
+router.delete("/userDelete", async (req, res) => {
+  console.log(req.body);
+  const response = await userDB.RemoveUser({ name: req.body.name });
+  res.send(response);
+});
+
 function toHash(string) {
   const hash = crypto.createHash("sha256");
   hash.update(string);

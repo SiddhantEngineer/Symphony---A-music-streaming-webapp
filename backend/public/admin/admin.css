@@ -1,3 +1,7 @@
+body{
+    background: black;
+    color: white;
+}
 fieldset{
     width: 500px;
     height: max-content;
@@ -12,4 +16,6 @@ form label{
 }
 form input{
     margin: 10px;
+    background: black;
+    color: white;
 }

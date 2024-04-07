@@ -1,7 +1,14 @@
 #viewport-root{
     width: 100%;
     height: 100%;
-    background: var(--bg);
+    background: black;
     display: grid;
-    grid-template-rows: calc(100% - 100px) 50px 50px;
+    grid-template-columns: 200px calc(100% - 600px) 400px;
+    overflow-y: scroll;
+}
+
+@media (orientation: portrait) {
+	#viewport-root{
+        grid-template-columns: 1fr;
+    }
 }

@@ -1,0 +1,6 @@
+#sidebar-root{
+    background: linear-gradient(45deg, var(--compliment), var(--accent));
+    margin: 20px;
+    border-radius: 10px;
+    animation: ga 1s linear infinite;
+}

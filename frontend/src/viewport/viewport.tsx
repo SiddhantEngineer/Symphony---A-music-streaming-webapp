@@ -1,44 +1,15 @@
-import React, { useState } from "react";
-import Player from "./player/player";
-import Navbar from "./navbar/navbar";
+import React from "react";
 import "./viewport.css";
+import Sidebar from "./sidebar/sidebar";
 import Home from "./home/home";
-import State from "./state";
-import Profile from "./profile/profile";
+import Search from "./search/search";
 
-interface Props {
-  userInfo: {
-    name: string;
-  };
-  setUserValidated: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function Viewport({ userInfo, setUserValidated }: Props) {
-  // const logOut = () => {
-  //   fetch("http://" + window.location.hostname + ":5000/logout", {
-  //     method: "GET",
-  //     credentials: "include",
-  //   }).then(() => {
-  //     console.log("HELO");
-  //     setUserValidated(false);
-  //   });
-  // };
-  const [state, setState] = useState<State>(State.HOME);
-  const getViewport = () => {
-    switch (state) {
-      case State.HOME: {
-        return <Home></Home>;
-      }
-      case State.PROFILE: {
-        return <Profile></Profile>;
-      }
-    }
-  };
+function Viewport() {
   return (
     <div id="viewport-root">
-      {getViewport()}
-      <Player></Player>
-      <Navbar state={state} setState={setState}></Navbar>
+      <Sidebar></Sidebar>
+      <Home></Home>
+      <Search></Search>
     </div>
   );
 }

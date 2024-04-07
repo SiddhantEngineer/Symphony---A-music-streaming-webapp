@@ -19,6 +19,19 @@ UserDB.Init = async function (mongoose) {
   UserDB.userCollection = await mongoose.model("users", UserDB.userSchema);
 };
 
+UserDB.RemoveUser = async function (user) {
+  let response = "Success";
+  await UserDB.userCollection
+    .findOneAndDelete(user)
+    .then((data) => {
+      response = "Success";
+    })
+    .catch((err) => {
+      response = "Error";
+      console.log(err);
+    });
+};
+
 UserDB.AddUser = async function (username, email, passwordHash) {
   let response = "";
   await UserDB.userCollection
