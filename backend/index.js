@@ -16,6 +16,16 @@ const userRoute = require("./routes/user");
 //============================================
 //Driver Code
 //============================================
+//some security related things
+//i dont know what this is but without this cookies not working
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      callback(null, true);
+    },
+    credentials: true,
+  })
+);
 app.use(express.static("./public"));
 app.use("/admin", adminRoute);
 app.use("/user", userRoute);

@@ -13,6 +13,10 @@ router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/admin/admin.html"));
 });
 
+router.get("/user", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/admin/user.html"));
+});
+
 router.post("/userAdd", async (req, res) => {
   const response = await userDB.AddUser(
     req.body.name,

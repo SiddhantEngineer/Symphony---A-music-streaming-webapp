@@ -53,6 +53,7 @@
     transform: translate(0px, -4px);
     box-shadow: 4px 4px 0px 0px black;
     transition: all 0.1s;
+    color: black;
 }
 /* #login-form input:hover{
     border-color: black;

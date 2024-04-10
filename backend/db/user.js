@@ -1,6 +1,12 @@
 const UserDB = {};
 
+UserDB.isInit = false;
+
 UserDB.Init = async function (mongoose) {
+  if (UserDB.isInit) {
+    return;
+  }
+  UserDB.isInit = true;
   UserDB.userSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -30,6 +36,7 @@ UserDB.RemoveUser = async function (user) {
       response = "Error";
       console.log(err);
     });
+  return response;
 };
 
 UserDB.AddUser = async function (username, email, passwordHash) {

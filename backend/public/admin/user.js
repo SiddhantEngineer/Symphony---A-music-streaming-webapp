@@ -34,6 +34,7 @@ const userListContainer = document.getElementById("user-list-container");
 
 userListForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  console.log("HI");
   fetch("userList", { method: "GET" })
     .then((response) => {
       if (!response.ok) {

@@ -1,21 +1,91 @@
+:root{
+    --colorA: #222831;
+    --colorB: #31363F;
+    --colorC: #76ABAE;
+    --colorD: #EEEEEE;
+}
+
 body{
-    background: black;
-    color: white;
+    background: var(--colorA);
+    color: var(--colorD);
+    margin: 0;
 }
 fieldset{
     width: 500px;
     height: max-content;
+    border-radius: 10px;
+    font-family: sans-serif;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 20px;
+    border: 1px solid var(--colorB);
+    padding: 10px;
+}
+fieldset:hover{
+    border: 1px solid var(--colorC);
 }
 form{
     display: grid;
     grid-template-columns: 1fr 5fr;
 }
-form label{
+label{
     text-align: right;
     margin: 10px;
 }
-form input{
+input{
     margin: 10px;
-    background: black;
+    background: var(--colorB);
     color: white;
+    outline: none;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+input:focus{
+    border: 1px solid var(--colorC);
+}
+input:hover{
+    border: 1px solid var(--colorC);
+}
+
+#navbar{
+    width: 50%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.navbar-element{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    overflow: auto;
+}
+.navbar-element:hover{
+    background: var(--colorC);
+    color: var(--colorA);
+}
+
+#root{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+}
+
+@media only screen and (max-width: 576px) {
+    fieldset{
+        width: 90%;
+        margin: 10px calc(5% - 10px);
+    }
+    #root{
+        grid-template-columns: 1fr;
+    }
 }

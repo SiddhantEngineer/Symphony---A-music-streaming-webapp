@@ -1,11 +1,14 @@
 #home-root{
     background: linear-gradient(45deg, var(--compliment), var(--accent));
-    margin: 20px;
+    margin: 10px;
     border-radius: 10px;
     display: flex;
     justify-content: start;
     align-items: center;
     flex-direction: column;
+    height: calc(100vh - 20px);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #hero-root{
@@ -33,4 +36,49 @@
     background-repeat: no-repeat;
     display: grid;
     background: rgb(0, 0, 0, 0.5);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#home-body-root{
+    height: max-content;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-playlist{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.home-playlist-song{
+    flex-shrink: 0;
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    background-size: contain;
+}
+
+.home-playlist-song div{
+    margin-top: 80%;
+    background: rgb(0, 0, 0, 0.5);
+    height: 20%;
+    transition: all 0.1s;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+.home-playlist-song:hover div{
+    margin-top: 0;
+    border: 1px solid white;
+    height: 100%;
 }

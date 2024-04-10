@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 const UserDB = require("../db/user");
+UserDB.Init(mongoose);
 
 router.use(bodyParser.json());
 router.use(cookieParser());
@@ -21,6 +22,7 @@ router.get("/cookielogin", (req, res) => {
 //login procedure
 router.post("/login", async (req, res) => {
   console.log("GOT REQ");
+  console.log(req.body);
   if (req.body.name == "") {
     //if user is using email for login
     await UserDB.LoginEmail(req.body.email, toHash(req.body.password)).then(

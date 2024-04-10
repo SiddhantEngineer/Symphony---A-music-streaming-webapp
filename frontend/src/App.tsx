@@ -5,20 +5,9 @@ import Viewport from "./viewport/viewport";
 import Login from "./login/login";
 // import Signin from "./signin/singin";
 
-interface SongInfo {
-  name: string;
-  src: string;
-  artist: string;
-}
-
 function App() {
   const [userValidated, setUserValidated] = useState(true);
   const [userID, setUserID] = useState("");
-  const [songInfo, setSongInfo] = useState<SongInfo>({
-    name: "",
-    src: "",
-    artist: "",
-  });
   return (
     <>
       {userValidated ? (

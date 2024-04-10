@@ -1,37 +1,50 @@
 import React, { useEffect, useState } from "react";
 import "./search.css";
+import { PlayerInfo, SongInfo } from "../interface";
 
-interface Song {
-  name: string;
-  artist: string;
-  src: string;
+interface Props {
+  setPlayerInfo: React.Dispatch<React.SetStateAction<PlayerInfo>>;
+  songResults: SongInfo[];
 }
 
-function Search() {
+function Search({ setPlayerInfo, songResults }: Props) {
+  const [searchKeyWord, setSearchKeyWord] = useState("");
+  const [shownResults, setShownResults] = useState<SongInfo[]>([]);
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setSearchKeyWord(e.currentTarget.value);
+  };
+  const handlePlay = (index: number) => {
+    setPlayerInfo((prev) => ({
+      ...prev,
+      name: shownResults[index].name + "",
+      src: shownResults[index].src + "",
+      isPlaying: true,
+    }));
+  };
   useEffect(() => {
-    fetch("http://localhost:5000/allSongs", { method: "GET" })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          console.log("ERROR");
-        }
-      })
-      .then((data) => {
-        setResults(data);
-      });
-  }, []);
-
-  const [results, setResults] = useState<Song[]>([]);
+    setShownResults(
+      songResults.filter(
+        (song) =>
+          song.name.toLowerCase().match(searchKeyWord.toLowerCase()) ||
+          song.artist.toLowerCase().match(searchKeyWord.toLowerCase())
+      )
+    );
+  }, [searchKeyWord]);
   return (
     <div id="search-root">
       <div id="search-bar-root">
-        <input id="search-bar"></input>
+        <input id="search-bar" onChange={handleInput}></input>
         <input id="search-button" type="submit" value={"search"}></input>
       </div>
       <div id="search-results-root">
-        {results.map((element, index) => (
-          <div key={index} id="search-results">
+        {shownResults.map((element, index) => (
+          <div
+            key={index}
+            onClick={() => {
+              handlePlay(index);
+            }}
+            id="search-results"
+          >
             <img
               src={`${element.src.replace("mp3", "jpg")}`}
               id="search-result-image"
