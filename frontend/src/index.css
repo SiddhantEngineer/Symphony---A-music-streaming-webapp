@@ -1,7 +1,11 @@
 :root{
-    --bg: rgb(255, 255, 255);
-    --accent: rgb(161, 89, 255);
-    --compliment: rgb(41, 0, 117);
+    --bg: #000000;
+    --accent: #31363F;
+    --compliment: #222831;
+    --colorA: #222831;
+    --colorB: #31363F;
+    --colorC: #76ABAE;
+    --colorD: #EEEEEE;
 }
 *{
     color: white;

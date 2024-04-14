@@ -25,7 +25,9 @@ function Home({ setPlayerInfo, songResults }: Props) {
                 className="home-playlist-song"
                 key={index}
                 style={{
-                  backgroundImage: `url("${song.src.replace("mp3", "jpg")}")`,
+                  backgroundImage: `url("${song.src
+                    .replace("mp3", "jpg")
+                    .replace("localhost", window.location.hostname)}")`,
                 }}
               >
                 <div>{song.name}</div>
@@ -40,8 +42,8 @@ function Home({ setPlayerInfo, songResults }: Props) {
 
 function createBundles(songResults: SongInfo[]) {
   const bundles: SongInfo[][] = [];
-  for (let i = 0; i < songResults.length; i += 10) {
-    bundles.push(songResults.slice(i, i + 9));
+  for (let i = 0; i < songResults.length - 90; i += 5) {
+    bundles.push(songResults.slice(i, i + 5));
   }
   return bundles;
 }

@@ -11,19 +11,22 @@ document.body.appendChild(player);
 
 function Viewport() {
   const [songResults, setSongResults] = useState<SongInfo[]>([]);
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/allSongs", { method: "GET" })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         console.log("ERROR");
-  //       }
-  //     })
-  //     .then((data) => {
-  //       setSongResults(data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch("http://" + window.location.hostname + ":5000/admin/songList", {
+      method: "GET",
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.log("ERROR");
+        }
+      })
+      .then((data) => {
+        setSongResults(data);
+        console.log(songResults);
+      });
+  }, []);
   const [playerInfo, setPlayerInfo] = useState<PlayerInfo>({
     songIndex: -1,
     isPlaying: false,
@@ -38,7 +41,11 @@ function Viewport() {
       <Sidebar></Sidebar>
       <Home songResults={songResults} setPlayerInfo={setPlayerInfo}></Home>
       <Search songResults={songResults} setPlayerInfo={setPlayerInfo}></Search>
-      <Player setPlayerInfo={setPlayerInfo} playerInfo={playerInfo}></Player>
+      <Player
+        player={player}
+        setPlayerInfo={setPlayerInfo}
+        playerInfo={playerInfo}
+      ></Player>
     </div>
   );
 }
@@ -51,7 +58,7 @@ function playSong(
   if (playerInfo.isPlaying) {
     console.log("HE");
     player.pause();
-    player.src = playerInfo.src;
+    player.src = playerInfo.src.replace("localhost", window.location.hostname);
     player.play();
     return;
   }

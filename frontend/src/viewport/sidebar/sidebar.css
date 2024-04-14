@@ -4,11 +4,18 @@
 }
 #sidebar-root{
     background: linear-gradient(45deg, var(--compliment), var(--accent));
-    margin: 20px;
-    border-radius: 5px;
+    margin: 5px;
+    margin-right: 0px;
     animation: ga 1s linear infinite;
     display: grid;
     grid-template-rows: 50px calc(100% - 50px);
+    border: 1px solid transparent;
+    transition: all 0.5s;
+    border-radius: 5px;
+}
+
+#sidebar-root:hover{
+    border: 1px solid var(--colorC);
 }
 
 #sidebar-header{
@@ -33,12 +40,30 @@
 }
 #sidebar-element{
     background: rgba(0, 0, 0, 0.5);
-    width: 80%;
+    width: 70%;
     padding: 10px;
     margin: 10px 0px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #sidebar-element:hover{
-    border: 1px solid white;
+    border: 1px solid var(--colorC);
+}
+
+@media (orientation: portrait) {
+    #sidebar-root{
+        margin-right: 5px;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+    .sidebar-open{
+        height: 200px;
+    }
+    .sidebar-close{
+        height: 50px;
+    }
 }

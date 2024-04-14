@@ -46,7 +46,9 @@ function Search({ setPlayerInfo, songResults }: Props) {
             id="search-results"
           >
             <img
-              src={`${element.src.replace("mp3", "jpg")}`}
+              src={`${element.src
+                .replace("mp3", "jpg")
+                .replace("localhost", window.location.hostname)}`}
               id="search-result-image"
             ></img>
             <div id="search-result-text">

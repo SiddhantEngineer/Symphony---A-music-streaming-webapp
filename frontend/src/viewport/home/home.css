@@ -1,14 +1,20 @@
 #home-root{
     background: linear-gradient(45deg, var(--compliment), var(--accent));
-    margin: 10px;
-    border-radius: 10px;
+    margin: 5px;
+    margin-right: 0px;
+    border-radius: 5px;
     display: flex;
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    height: calc(100vh - 20px);
+    height: calc(100vh - 10px);
     overflow-y: auto;
     overflow-x: hidden;
+    border: 1px solid transparent;
+}
+
+#home-root:hover{
+    /* border: 1px solid var(--colorC); */
 }
 
 #hero-root{
@@ -73,12 +79,12 @@
     background: rgb(0, 0, 0, 0.5);
     height: 20%;
     transition: all 0.1s;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     border-radius: 10px;
 }
 
 .home-playlist-song:hover div{
     margin-top: 0;
-    border: 1px solid white;
+    border: 1px solid var(--colorC);
     height: 100%;
 }

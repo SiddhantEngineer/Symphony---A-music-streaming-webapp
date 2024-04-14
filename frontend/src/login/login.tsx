@@ -17,7 +17,7 @@ function Login({ setUserValidated, setUserID }: Props) {
     password = event.currentTarget.value;
   };
   const checkUserToken = async () => {
-    const uri = "http://localhost:5000" + "/user/cookielogin";
+    const uri = "http://" + window.location.hostname + "/user/cookielogin";
     fetch(uri, {
       method: "GET",
       credentials: "include",
@@ -41,7 +41,7 @@ function Login({ setUserValidated, setUserID }: Props) {
     },
     submitButton: HTMLInputElement
   ) => {
-    const uri = "http://localhost:5000" + "/user/login";
+    const uri = "http://" + window.location.hostname + "/user/login";
     fetch(uri, {
       method: "POST",
       headers: {

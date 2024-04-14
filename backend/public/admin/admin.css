@@ -10,6 +10,9 @@ body{
     color: var(--colorD);
     margin: 0;
 }
+pre{
+    font-family: sans-serif;
+}
 fieldset{
     width: 500px;
     height: max-content;
@@ -59,6 +62,8 @@ input:hover{
     overflow: hidden;
 }
 .navbar-element{
+    text-decoration: none;
+    color: white;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -66,6 +71,10 @@ input:hover{
     align-items: center;
     font-family: sans-serif;
     overflow: auto;
+}
+.highlight{
+    background: var(--colorC);
+    color: var(--colorA);
 }
 .navbar-element:hover{
     background: var(--colorC);
