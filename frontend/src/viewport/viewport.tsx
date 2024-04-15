@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./viewport.css";
 import Sidebar from "./sidebar/sidebar";
 import Home from "./home/home";
@@ -11,7 +11,9 @@ document.body.appendChild(player);
 
 function Viewport() {
   const [songResults, setSongResults] = useState<SongInfo[]>([]);
-  useEffect(() => {
+  const [loadSongs, setLoadSongs] = useState(false);
+  useMemo(() => {
+    console.info("Loading Songs");
     fetch("http://" + window.location.hostname + ":5000/admin/songList", {
       method: "GET",
     })
@@ -19,20 +21,21 @@ function Viewport() {
         if (response.ok) {
           return response.json();
         } else {
-          console.log("ERROR");
+          console.error("ERROR in Fetch");
         }
       })
       .then((data) => {
         setSongResults(data);
-        console.log(songResults);
       });
-  }, []);
+  }, [loadSongs]);
+
   const [playerInfo, setPlayerInfo] = useState<PlayerInfo>({
     songIndex: -1,
     isPlaying: false,
     src: "",
     name: "",
   });
+
   useEffect(() => {
     playSong(player, playerInfo, setPlayerInfo);
   }, [playerInfo]);
@@ -56,17 +59,18 @@ function playSong(
   setPlayerInfo: React.Dispatch<React.SetStateAction<PlayerInfo>>
 ) {
   if (playerInfo.isPlaying) {
-    console.log("HE");
-    player.pause();
-    player.src = playerInfo.src.replace("localhost", window.location.hostname);
-    player.play();
+    if (playerInfo.src) {
+      console.log(playerInfo.src);
+      player.pause();
+      player.src = playerInfo.src.replace(
+        "localhost",
+        window.location.hostname
+      );
+      player.play();
+    }
     return;
   }
-  if (playerInfo.src) {
-    console.log(playerInfo.src);
-    player.src = playerInfo.src;
-    player.play();
-  }
+  player.pause();
 }
 
 export default Viewport;

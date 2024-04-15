@@ -8,8 +8,8 @@ interface Props {
 }
 
 function Home({ setPlayerInfo, songResults }: Props) {
-  console.log(songResults);
   const bundles: SongInfo[][] = useMemo(() => {
+    console.info("Recalculating Bundles");
     return createBundles(songResults);
   }, [songResults]);
   return (
@@ -18,8 +18,8 @@ function Home({ setPlayerInfo, songResults }: Props) {
         <div id="hero-image-section"></div>
       </div>
       <div id="home-body-root">
-        {bundles.map((bundle) => (
-          <div className="home-playlist">
+        {bundles.map((bundle, index) => (
+          <div key={index} className="home-playlist">
             {bundle.map((song, index) => (
               <div
                 className="home-playlist-song"
