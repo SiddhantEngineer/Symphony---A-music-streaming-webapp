@@ -62,6 +62,19 @@ router.get("/logout", (req, res) => {
   res.end();
 });
 
+router.post("/signin", async (req, res) => {
+  const response = await UserDB.AddUser(
+    req.body.name,
+    req.body.email,
+    toHash(req.body.password)
+  );
+  if (response == "Success") {
+    res.json({ isValid: true });
+  } else {
+    res.json({ isValid: false });
+  }
+});
+
 function toHash(string) {
   const hash = crypto.createHash("sha256");
   hash.update(string);

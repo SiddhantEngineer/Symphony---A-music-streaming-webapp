@@ -4,9 +4,10 @@ import "./login.css";
 interface Props {
   setUserValidated: React.Dispatch<React.SetStateAction<boolean>>;
   setUserID: React.Dispatch<React.SetStateAction<string>>;
+  setUserAuthState: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function Login({ setUserValidated, setUserID }: Props) {
+function Login({ setUserValidated, setUserID, setUserAuthState }: Props) {
   let username = "";
   let password = "";
   const [errorMessage, setErrorMessage] = useState("");
@@ -91,14 +92,14 @@ function Login({ setUserValidated, setUserID }: Props) {
     handleLogin(userData, submitButton);
   };
   return (
-    <div id="login-root">
-      <div id="login-container">
-        <div id="login-header">LOGIN FORM</div>
-        <form id="login-form" onSubmit={validateUser}>
+    <div id="user-root">
+      <div id="user-container">
+        <div id="user-header">LOGIN FORM</div>
+        <form id="user-form" onSubmit={validateUser}>
           <div>
             <label>Name or Email: </label>
             <input
-              maxLength={10}
+              maxLength={15}
               minLength={3}
               required
               onInput={updateUsername}
@@ -116,7 +117,23 @@ function Login({ setUserValidated, setUserID }: Props) {
           </div>
           <div>
             <input type="submit" value={"Submit"}></input>
-            <div>{errorMessage}</div>
+            {errorMessage}
+            <div
+              style={{
+                flexDirection: "row",
+                justifyContent: "start",
+                alignItems: "center",
+              }}
+            >
+              New User?{" "}
+              <button
+                onClick={() => {
+                  setUserAuthState("signin");
+                }}
+              >
+                Sign in
+              </button>
+            </div>
           </div>
         </form>
       </div>

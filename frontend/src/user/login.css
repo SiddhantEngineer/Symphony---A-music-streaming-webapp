@@ -1,8 +1,8 @@
 :root{
-    --login-width: 450px;
-    --login-height: max-content;
+    --user-width: 450px;
+    --user-height: max-content;
 }
-#login-root{
+#user-root{
     width: 100%;
     height: 100vh;
     background: linear-gradient(45deg, var(--compliment), var(--accent));
@@ -10,9 +10,9 @@
     justify-content: center;
     align-items: center;
 }
-#login-container{
-    width: var(--login-width);
-    height: var(--login-height);
+#user-container{
+    width: var(--user-width);
+    height: var(--user-height);
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     border: 2px solid var(--colorB);
@@ -22,23 +22,23 @@
     align-items: center;
     z-index: 5;
 }
-#login-container:hover{
+#user-container:hover{
     /* border: 1px solid var(--colorC); */
 }
-#login-header{
+#user-header{
     margin: 40px;
     font-size: 40px;
     color: var(--colorD);
     border-bottom: 2px solid var(--colorC);
 }
-#login-form{
+#user-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-#login-form div{
+#user-form div{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +46,18 @@
     padding: 10px 0px;
     width: 70%;
 }
-#login-form input{
+#user-form div button{
+    margin-left: 10px;
+    background: var(--colorB);
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid transparent;
+}
+#user-form div button:hover{
+    border: 1px solid var(--colorC);
+}
+#user-form input{
     width: 100%;
     padding: 5px 0px 5px 5px;
     border-radius: 5px;
@@ -56,16 +67,16 @@
     color: var(--colorD);
     background: var(--colorB);
 }
-#login-form input:focus{
+#user-form input:focus{
     border: 2px solid var(--colorC) ;
 }
 
-#login-form label{
+#user-form label{
     color: var(--colorD);
     margin-bottom: 5px;
 }
 
-#login-form input[type=submit]{
+#user-form input[type=submit]{
     width: 100%;
     background: var(--colorB);
     color: var(--colorD);
@@ -74,7 +85,7 @@
     border-radius: 10px;
     border: 2px solid black;
 }
-#login-form input[type=submit]:hover{
+#user-form input[type=submit]:hover{
     border: 2px solid var(--colorC);
 }
 
@@ -99,7 +110,7 @@
 }
 
 @media (orientation: portrait) {
-    #login-container{
+    #user-container{
         width: 90%;
     }
 }

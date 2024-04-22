@@ -22,7 +22,7 @@ router.get("/song", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/admin/song.html"));
 });
 
-router.post("/userAdd", async (req, res) => {
+router.post("/userAdd", multer().any(), async (req, res) => {
   const response = await userDB.AddUser(
     req.body.name,
     req.body.email,
