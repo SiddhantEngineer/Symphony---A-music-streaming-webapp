@@ -9,4 +9,12 @@ export interface PlayerInfo{
     isPlaying: boolean;
     src: string;
     name: string;
+    time: number;
+}
+
+export interface PlayerController{
+    next:()=>void;
+    prev:()=>void;
+    play:() => void;
+    pause:() => void; 
 }

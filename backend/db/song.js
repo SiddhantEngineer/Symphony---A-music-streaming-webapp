@@ -28,20 +28,24 @@ SongDB.Init = async function (mongoose) {
 
 SongDB.RemoveSong = async function (song) {
   let response = "Success";
+  console.log("SongDeleting: ", song);
   await SongDB.songCollection
     .findOneAndDelete(song)
     .then((data) => {
+      console.log(data);
       response = "Success";
     })
     .catch((err) => {
       response = "Error";
       console.log(err);
     });
+  console.log("DELELTED SONG: ", song);
   return response;
 };
 
 SongDB.AddSong = async function (name, artist, src) {
   let response = "";
+  let data = await SongDB.songCollection.find();
   await SongDB.songCollection
     .create({
       name: name,

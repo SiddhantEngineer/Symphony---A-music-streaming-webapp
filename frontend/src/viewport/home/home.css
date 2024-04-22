@@ -89,3 +89,11 @@
     border: 1px solid var(--colorC);
     height: 100%;
 }
+
+@media (orientation: portrait) {
+    #home-root{
+        margin-right: 5px;
+        border-radius: 5px;
+        margin-bottom: 0;
+    }
+}

@@ -8,10 +8,11 @@ import Login from "./login/login";
 function App() {
   const [userValidated, setUserValidated] = useState(false);
   const [userID, setUserID] = useState("");
+  console.log("IN APP");
   return (
     <>
       {userValidated ? (
-        <Viewport></Viewport>
+        <Viewport setUserValidated={setUserValidated}></Viewport>
       ) : (
         <Login
           setUserID={setUserID}

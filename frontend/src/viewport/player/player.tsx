@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./player.css";
-import { PlayerInfo } from "../interface";
+import { PlayerInfo, PlayerController } from "../interface";
 
 interface Props {
   setPlayerInfo: React.Dispatch<React.SetStateAction<PlayerInfo>>;
   playerInfo: PlayerInfo;
   player: HTMLAudioElement;
+  playerController: PlayerController;
 }
 
-function Player({ setPlayerInfo, playerInfo, player }: Props) {
+function Player({
+  setPlayerInfo,
+  playerInfo,
+  player,
+  playerController,
+}: Props) {
   const [playerProgress, setPlayerProgress] = useState(0);
   player.addEventListener("timeupdate", () => {
     setPlayerProgress(player.currentTime / player.duration);
@@ -18,12 +24,15 @@ function Player({ setPlayerInfo, playerInfo, player }: Props) {
     const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
     const progressBarWidth = progressBar.clientWidth;
     const percentage = clickPosition / progressBarWidth;
-    // console.log("Clicked at:", (percentage * 100).toFixed(2) + "%");
     setPlayerProgress(percentage);
     player.currentTime = player.duration * percentage;
   };
   const pauseSong = () => {
-    setPlayerInfo((prev) => ({ ...prev, isPlaying: !prev.isPlaying }));
+    setPlayerInfo((prev) => ({
+      ...prev,
+      isPlaying: !prev.isPlaying,
+      time: player.currentTime,
+    }));
   };
 
   return (
@@ -42,15 +51,22 @@ function Player({ setPlayerInfo, playerInfo, player }: Props) {
             margin: "0px 10px",
             borderRadius: "5px",
           }}
-          src={playerInfo.src
-            .replace("mp3", "jpg")
-            .replace("localhost", window.location.hostname)}
+          src={
+            playerInfo.src
+              .replace("mp3", "jpg")
+              .replace("localhost", window.location.hostname) || "default.jpg"
+          }
         ></img>
         {playerInfo.name}
       </div>
       <div id="player-song-controls">
         <span>
-          <img width={"25px"} src="icons/rewind.svg" alt="" />
+          <img
+            onClick={playerController.prev}
+            width={"25px"}
+            src="icons/rewind.svg"
+            alt=""
+          />
         </span>
         <span>
           <img
@@ -61,7 +77,13 @@ function Player({ setPlayerInfo, playerInfo, player }: Props) {
           />
         </span>
         <span>
-          <img src="icons/" alt="" />
+          <img
+            onClick={playerController.next}
+            src="icons/rewind.svg"
+            style={{ transform: "rotate(180deg)" }}
+            width={"25px"}
+            alt=""
+          />
         </span>
       </div>
     </div>

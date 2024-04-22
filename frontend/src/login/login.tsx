@@ -97,11 +97,22 @@ function Login({ setUserValidated, setUserID }: Props) {
         <form id="login-form" onSubmit={validateUser}>
           <div>
             <label>Name or Email: </label>
-            <input onInput={updateUsername}></input>
+            <input
+              maxLength={10}
+              minLength={3}
+              required
+              onInput={updateUsername}
+            ></input>
           </div>
           <div>
             <label>Password: </label>
-            <input type="password" onInput={updatePassword}></input>
+            <input
+              required
+              minLength={3}
+              maxLength={8}
+              type="password"
+              onInput={updatePassword}
+            ></input>
           </div>
           <div>
             <input type="submit" value={"Submit"}></input>

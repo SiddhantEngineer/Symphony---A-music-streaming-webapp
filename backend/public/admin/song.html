@@ -11,15 +11,24 @@
         <a class="navbar-element" id="user-nav" href="user.html">users</a>
         <a class="navbar-element highlight" id="song-nav" href="song.html">songs</a>
     </div>
-    <!-- <fieldset>
-    <legend>Add User</legend>
-    <form id="add-user">
-        <label>Name</label><input name="name" type="text" required id="name">
-        <label>Email</label><input name="email" type="email" required id="email">
-        <label>Password</label><input name="password" type="password" required id="password">
-        <label id="add-user-status"></label><input type="submit">
-    </form>
-    </fieldset> -->
+    <fieldset>
+        <legend>Add Song</legend>
+        <form id="addsong-form">
+            <label for="name">name</label><input id="name" name="name" type="text">
+            <label for="artist">artist</label><input id="artist" name="artist" type="text">
+            <label for="pic">song image</label><input accept=".jpg" id="pic" name="pic" type="file">
+            <label for="mp3">song File</label><input accept=".mp3" id="mp3" name="mp3" type="file">
+            <label id="addsong-error" class="error"></label><input type="submit">
+        </form>
+    </fieldset>
+    <!-- -------------------------------------------- -->
+    <fieldset>
+        <legend>Song Delete</legend>
+        <form id="song-delete">
+            <label>Name</label><input name="delete" type="text" required id="delete-name">
+            <label id="song-delete-status"></label><input type="submit">
+        </form>
+    </fieldset>
     <!-- -------------------------------------------- -->
     <fieldset>
         <legend>Song List</legend>
@@ -29,14 +38,6 @@
             </div>
         </form>
     </fieldset>
-    <!-- -------------------------------------------- -->
-    <!-- <fieldset>
-        <legend>User Delete</legend>
-        <form id="user-delete">
-            <label>Name</label><input name="name" type="text" required id="delete-name">
-            <label id="user-delete-status"></label><input type="submit">
-        </form>
-    </fieldset> -->
 </body>
 <script src="song.js"></script>
 </html>

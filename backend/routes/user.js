@@ -13,6 +13,7 @@ router.use(cookieParser());
 //check if user has already logged in once and stored data in cookies
 router.get("/cookielogin", (req, res) => {
   if (req.cookies.userID) {
+    console.log(req.cookies.userID);
     res.end(req.cookies.userID);
   } else {
     res.end("NO");
@@ -56,6 +57,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
+  console.log(req.cookies.userID);
   res.clearCookie("userID");
   res.end();
 });

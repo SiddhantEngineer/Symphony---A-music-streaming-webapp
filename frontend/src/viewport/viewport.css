@@ -10,5 +10,9 @@
 @media (orientation: portrait) {
 	#viewport-root{
         grid-template-columns: 1fr;
+        overflow: hidden;
+    }
+    .mobile-hide{
+        display: none !important; 
     }
 }
