@@ -42,7 +42,7 @@ function Home({ setPlayerInfo, songResults }: Props) {
 
 function createBundles(songResults: SongInfo[]) {
   const bundles: SongInfo[][] = [];
-  for (let i = 0; i < songResults.length - 90; i += 5) {
+  for (let i = 0; i < songResults.length - 50; i += 5) {
     bundles.push(songResults.slice(i, i + 5));
   }
   return bundles;

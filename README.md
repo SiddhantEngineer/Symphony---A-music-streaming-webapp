@@ -4,7 +4,11 @@ An Open Source music Streaming Platform
 
 Frontend: Web App
 ---
-![alt text](image.png)
+# Desktop
+![alt text](image-3.png)
+
+# Mobile
+![alt text](image-4.png)
 
 Backend: Admin DashBoard
 ---
