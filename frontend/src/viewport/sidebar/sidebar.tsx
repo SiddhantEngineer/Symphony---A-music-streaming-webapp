@@ -12,10 +12,12 @@ function Sidebar({
   mobileViewportState,
   setUserValidated,
 }: Props) {
+  //for mobile devices -> opening sidebar when user clicks it
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
+
   const logOut = () => {
     fetch("http://" + window.location.hostname + ":5000/user/logout", {
       method: "GET",
@@ -29,6 +31,7 @@ function Sidebar({
       setUserValidated(false);
     });
   };
+
   return (
     <div
       id="sidebar-root"

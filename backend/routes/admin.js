@@ -10,18 +10,22 @@ const fs = require("fs");
 userDB.Init(mongoose);
 songDB.Init(mongoose);
 
+//default admin panel
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/admin/admin.html"));
 });
 
+//user admin panel
 router.get("/user", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/admin/user.html"));
 });
 
+//song admin panel
 router.get("/song", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/admin/song.html"));
 });
 
+//userDB manipulation
 router.post("/userAdd", multer().any(), async (req, res) => {
   const response = await userDB.AddUser(
     req.body.name,
@@ -43,6 +47,7 @@ router.delete("/userDelete", multer().any(), async (req, res) => {
   res.send(response);
 });
 
+//songDB manipulation
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "../public/songsdata/100Hits2021")); // Destination folder where files will be saved

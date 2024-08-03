@@ -19,6 +19,7 @@ function Player({
   player.addEventListener("timeupdate", () => {
     setPlayerProgress(player.currentTime / player.duration);
   });
+
   const seekSong = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const progressBar = e.currentTarget;
     const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
@@ -27,6 +28,7 @@ function Player({
     setPlayerProgress(percentage);
     player.currentTime = player.duration * percentage;
   };
+
   const pauseSong = () => {
     setPlayerInfo((prev) => ({
       ...prev,

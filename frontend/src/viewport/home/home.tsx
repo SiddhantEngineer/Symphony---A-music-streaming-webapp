@@ -9,6 +9,7 @@ interface Props {
 }
 
 function Home({ setPlayerInfo, songResults, mobileViewportState }: Props) {
+  //songresults are divided into bundles of fixed size
   const bundles: SongInfo[][] = useMemo(() => {
     console.info("Recalculating Bundles");
     return createBundles(songResults);

@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 
 DBConnection.Init = async () => {
   // const uri =
-  //   "mongodb+srv://qqqqqq:qqqqqq@cluster0.fcdv1mo.mongodb.net/symphony?retryWrites=true&w=majority&appName=Cluster0";
-  const uri = "mongodb://localhost:27017/symphony";
+  // const uri = "mongodb://localhost:27017";
+  const uri = process.env.MONGODB_URI;
+  console.log("Connecting To DB at: ", uri);
   const clientOptions = {
     serverApi: { version: "1", strict: true, deprecationErrors: true },
+    dbName: "symphony",
   };
-  await connect(uri, clientOptions);
+  +(await connect(uri, clientOptions));
 };
 
 async function connect(uri, clientOptions) {

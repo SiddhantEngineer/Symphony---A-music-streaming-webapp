@@ -1,0 +1,29 @@
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    network:
+      default:
+        ipv4_address: 172.64.32.3
+
+  frontend:
+    build: ./frontend
+    ports:
+      - 5173:5173
+    network:
+      default:
+        ipv4_address: 172.64.32.1
+
+  backend:
+    build: ./backend
+    ports:
+      - 5173:5173
+    network:
+      default:
+        ipv4_address: 172.64.32.2
+
+network:
+  default:
+    iam:
+      subnet: 172.64.32.0/24

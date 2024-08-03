@@ -1,5 +1,5 @@
 //============================================
-//Thirdparty modules
+//Middlewares
 //============================================
 const express = require("express");
 const app = express();
@@ -17,7 +17,6 @@ const userRoute = require("./routes/user");
 //Driver Code
 //============================================
 //some security related things
-//i dont know what this is but without this cookies not working
 app.use(
   cors({
     origin: (origin, callback) => {

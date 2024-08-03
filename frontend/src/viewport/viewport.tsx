@@ -42,8 +42,8 @@ function Viewport({ setUserValidated }: Props) {
     time: 0,
   });
 
+  //listen for changes in playerinfo
   useEffect(() => {
-    console.log("USE EFET");
     if (playerInfo.isPlaying) {
       playerController.play();
       return;
@@ -51,6 +51,7 @@ function Viewport({ setUserValidated }: Props) {
     playerController.pause();
   }, [playerInfo]);
 
+  //playercontroller for controlling media player
   const playerController: PlayerController = {
     next: () => {
       const nextSong = Math.floor(Math.random() * songResults.length);

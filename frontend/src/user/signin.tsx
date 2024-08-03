@@ -29,6 +29,7 @@ function Signin({ setUserValidated, setUserID, setUserAuthState }: Props) {
     },
     submitButton: HTMLInputElement
   ) => {
+    // const uri = import.meta.env.VITE_SERVER + "/user/signin";
     const uri = "http://" + window.location.hostname + ":5000/user/signin";
     fetch(uri, {
       method: "POST",
@@ -53,7 +54,7 @@ function Signin({ setUserValidated, setUserID, setUserAuthState }: Props) {
           setUserID(data.userID);
           setUserValidated(true);
         } else {
-          setErrorMessage("cant find user");
+          setErrorMessage("user already exists");
           submitButton.blur();
           submitButton.setAttribute("value", "Submit");
         }
@@ -75,6 +76,7 @@ function Signin({ setUserValidated, setUserID, setUserAuthState }: Props) {
   };
   return (
     <div id="user-root">
+      <h1 style={{ position: "fixed", top: "0" }}>21BCP270</h1>
       <div id="user-container">
         <div id="user-header">SIGN IN FORM</div>
         <form id="user-form" onSubmit={validateUser}>
@@ -85,16 +87,19 @@ function Signin({ setUserValidated, setUserID, setUserAuthState }: Props) {
               minLength={3}
               required
               onInput={updateUsername}
+              pattern="[a-zA-Z0-9_]+"
+              title="Only Alphabets, numbers and underscore allowed"
             ></input>
           </div>
           <div>
             <label>Email: </label>
             <input
-              maxLength={15}
+              maxLength={25}
               minLength={3}
               required
               onInput={updateEmail}
               type="email"
+              title="Enter your email"
             ></input>
           </div>
           <div>
@@ -105,6 +110,7 @@ function Signin({ setUserValidated, setUserID, setUserAuthState }: Props) {
               maxLength={8}
               type="password"
               onInput={updatePassword}
+              title="enter your password. 3 to 8 characters"
             ></input>
           </div>
           <div>

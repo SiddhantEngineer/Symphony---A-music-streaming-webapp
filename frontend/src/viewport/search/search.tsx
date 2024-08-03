@@ -16,11 +16,13 @@ function Search({
   mobileViewportState,
 }: Props) {
   const [searchKeyWord, setSearchKeyWord] = useState("");
+  //results that are shown on the frontend.
   const [shownResults, setShownResults] = useState<SongInfo[]>([]);
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     setSearchKeyWord(e.currentTarget.value);
   };
 
+  //for playing the selected song
   const handlePlay = (index: number) => {
     setPlayerInfo((prev) => ({
       ...prev,
@@ -39,6 +41,7 @@ function Search({
       )
     );
   }, [searchKeyWord]);
+
   return (
     <div
       id="search-root"

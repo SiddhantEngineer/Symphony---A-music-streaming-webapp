@@ -11,13 +11,16 @@ function Login({ setUserValidated, setUserID, setUserAuthState }: Props) {
   let username = "";
   let password = "";
   const [errorMessage, setErrorMessage] = useState("");
+
   const updateUsername = (event: React.FormEvent<HTMLInputElement>) => {
     username = event.currentTarget.value;
   };
   const updatePassword = (event: React.FormEvent<HTMLInputElement>) => {
     password = event.currentTarget.value;
   };
+
   const checkUserToken = async () => {
+    // const uri = import.meta.env.VITE_SERVER + "/user/cookielogin";
     const uri = "http://" + window.location.hostname + ":5000/user/cookielogin";
     fetch(uri, {
       method: "GET",
@@ -34,6 +37,7 @@ function Login({ setUserValidated, setUserID, setUserAuthState }: Props) {
       });
   };
   checkUserToken();
+
   const handleLogin = (
     userData: {
       name: String;
@@ -42,6 +46,7 @@ function Login({ setUserValidated, setUserID, setUserAuthState }: Props) {
     },
     submitButton: HTMLInputElement
   ) => {
+    // const uri = import.meta.env.VITE_SERVER + "/user/login";
     const uri = "http://" + window.location.hostname + ":5000/user/login";
     fetch(uri, {
       method: "POST",
@@ -93,16 +98,19 @@ function Login({ setUserValidated, setUserID, setUserAuthState }: Props) {
   };
   return (
     <div id="user-root">
+      <h1 style={{ position: "fixed", top: "0" }}>21BCP270</h1>
       <div id="user-container">
         <div id="user-header">LOGIN FORM</div>
         <form id="user-form" onSubmit={validateUser}>
           <div>
             <label>Name or Email: </label>
             <input
-              maxLength={15}
+              maxLength={25}
               minLength={3}
               required
               onInput={updateUsername}
+              pattern="[a-zA-Z0-9_]+"
+              title="Only Alphabets, numbers and underscore allowed"
             ></input>
           </div>
           <div>
